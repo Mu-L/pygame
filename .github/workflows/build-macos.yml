@@ -134,7 +134,7 @@ jobs:
         bash ./install_mac_deps.sh
 
       CIBW_BEFORE_BUILD: |
-        pip install requests numpy Sphinx "Cython==3.0,<3.1" setuptools wheel
+        pip install requests numpy Sphinx "Cython>=3.0,<3.1" setuptools wheel
         python setup.py docs
         
 
@@ -161,7 +161,7 @@ jobs:
           key: macdep-${{ hashFiles('buildconfig/manylinux-build/**') }}-${{ hashFiles('buildconfig/macdependencies/*.sh') }}-${{ matrix.macarch }}
 
       - name: Build and test wheels
-        uses: pypa/cibuildwheel@v2.19.2
+        uses: pypa/cibuildwheel@v2.20.0
 
       - uses: actions/upload-artifact@v3
         with:
